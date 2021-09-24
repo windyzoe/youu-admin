@@ -1,0 +1,44 @@
+.wrapper {
+  height: 4px;
+  // width: 100%;
+  overflow: hidden;
+  width: 360px;
+  margin: 24px auto 76px;
+  .line {
+    height: 100%;
+    width: 64px;
+    -webkit-transform: translateX(-64px);
+    -ms-transform: translateX(-64px);
+    transform: translateX(-64px);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(24, 144, 255, 0)), to(#1890ff));
+    background: -webkit-linear-gradient(left, rgba(24, 144, 255, 0) 0%, #1890ff 100%);
+    background: linear-gradient(to right, rgba(24, 144, 255, 0) 0%, #1890ff 100%);
+    -webkit-animation: titleLine 2s ease-in-out 0s infinite;
+    animation: titleLine 2s ease-in-out 0s infinite;
+  }
+}
+
+@-webkit-keyframes titleLine {
+  0%,
+  25% {
+    -webkit-transform: translateX(-64px);
+    transform: translateX(-64px);
+  }
+  75%,
+  100% {
+    -webkit-transform: translateX(376px);
+    transform: translateX(376px);
+  }
+}
+@keyframes titleLine {
+  0%,
+  25% {
+    -webkit-transform: translateX(-64px);
+    transform: translateX(-64px);
+  }
+  75%,
+  100% {
+    -webkit-transform: translateX(376px);
+    transform: translateX(376px);
+  }
+}

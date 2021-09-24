@@ -1,0 +1,153 @@
+@import '~antd/lib/style/themes/default.less';
+
+.siderLayout {
+  flex-direction:row;
+  .sider {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    overflow: hidden auto;
+    height: 100vh;
+    z-index: 4;
+    background-color: transparent;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12),
+      0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    .menuBgImg {
+      position: absolute;
+      z-index: -1;
+      height: 100%;
+      width: inherit;
+      background-size: cover;
+      opacity: 0.16;
+      background-position: 26% center;
+      overflow-x: hidden;
+    }
+    .menu {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      flex: auto;
+    }
+    .menu:hover {
+      overflow-y: auto;
+    }
+    .logo {
+      flex: none;
+    }
+    .siderTrigger {
+      flex: none;
+      text-align: center;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      cursor: pointer;
+    }
+    :global {
+      .@{ant-prefix}-menu {
+        background: transparent;
+      }
+      .@{ant-prefix}-layout-sider-children {
+        display: flex;
+        flex-direction: column;
+      }
+      .@{ant-prefix}-menu-inline .@{ant-prefix}-menu-selected::after,
+      .@{ant-prefix}-menu-inline .@{ant-prefix}-menu-item-selected::after {
+        opacity: 0;
+      }
+      .@{ant-prefix}-menu:not(.@{ant-prefix}-menu-horizontal) .@{ant-prefix}-menu-item-selected{
+        border-radius: 1rem;
+        box-shadow: 0 0 6px @primary-5;
+        background-color: @primary-6;
+        a,a:hover{
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.topHeaderLayout {
+  min-height: 100vh;
+  :global {
+    .@{ant-prefix}-menu {
+      background: transparent;
+    }
+  }
+  .header {
+    background: transparent;
+    margin-bottom: 1rem;
+  }
+  .particles {
+    background: linear-gradient(to right, @primary-8, @primary-6);
+    z-index: 0;
+    width: 100%;
+    position: absolute;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    :global {
+      .@{ant-prefix}-menu-horizontal > .@{ant-prefix}-menu-submenu > .@{ant-prefix}-menu-submenu-title {
+        font-size: 16px;
+        color: #fff;
+        letter-spacing: 0.05rem;
+      }
+      .@{ant-prefix}-menu-horizontal {
+        border: 0;
+      }
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item:hover,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu:hover,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-active,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-active,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-open,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-open,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-selected,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-selected {
+        border: 0;
+        font-weight: 700;
+      }
+      .@{ant-prefix}-menu-horizontal > .@{ant-prefix}-menu-submenu {
+        border: 0;
+      }
+    }
+  }
+}
+.tabRouter {
+  :global{
+
+    .@{ant-prefix}-tabs-nav.youuui {
+      margin-bottom: 0;
+    }
+    .@{ant-prefix}-tabs-nav.youuui {
+      &:before{
+        border-color: #e8e8e8;
+      }
+    }
+    .@{ant-prefix}-tabs-tab-active.youuui {
+      background: #fff !important;
+    }
+    .@{ant-prefix}-tabs-ink-bar.youuui {
+      background: #fff;
+      margin: 0 0.5px;
+      height: 1px !important;
+    }
+    .@{ant-prefix}-tabs-tab.youuui {
+      padding: 8px 0 8px 12px;
+      background: #fafafa;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid #e8e8e8;
+      margin: 0;
+    }
+    .@{ant-prefix}-tabs-tab-remove.youuui {
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: -14px;
+      font-size: 14px;
+    }
+    .@{ant-prefix}-tabs.youuui {
+      background: #fff;
+      border-radius: 4px;
+    }
+    .@{ant-prefix}-tabs-content-holder.youuui {
+      border-left: 1px solid #e8e8e8;
+      padding: 1rem;
+    }
+  }
+}

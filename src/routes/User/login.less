@@ -1,0 +1,104 @@
+@import '~antd/lib/style/themes/default.less';
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  .head {
+    width: 100%;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .mainContent {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .carousel {
+      flex: auto;
+      min-width: 560px;
+      display: none;
+    }
+  }
+  .loginCard {
+    background-color: #ffffff;
+    flex: none;
+    z-index: 1;
+    width: 420px;
+    // height: 360px;
+    border-radius: 8px;
+    .logHead {
+      color: @primary-5;
+      border-radius: 8px 8px 0 0;
+      padding: 32px;
+      text-align: center;
+      letter-spacing: 0.2rem;
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .logContent {
+      padding: 0 42px;
+      .submit {
+        width: 100%;
+      }
+    }
+    .logFooter {
+      padding: 36px 0 12px 0;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.65);
+      opacity: 0.8;
+    }
+    :global {
+      .@{ant-prefix}-menu {
+        background: transparent;
+      }
+      .@{ant-prefix}-input {
+        border: none;
+        border-bottom: 1px solid #d9d9d9;
+        border-radius: 0;
+        padding-left: 0;
+      }
+      .@{ant-prefix}-input:hover {
+        border-color: @primary-color;
+      }
+      .@{ant-prefix}-input:focus {
+        box-shadow: none;
+        border-color: @primary-color;
+      }
+      .@{ant-prefix}-input-password {
+        border: none;
+        border-bottom: 1px solid #d9d9d9;
+        padding-left: 0;
+        border-radius: 0;
+        .@{ant-prefix}-input {
+          border: none;
+        }
+      }
+      .@{ant-prefix}-input-password:hover {
+        border-color: @primary-color;
+      }
+      .@{ant-prefix}-input-password:focus {
+        box-shadow: none;
+        border-color: @primary-color;
+      }
+      .@{ant-prefix}-input-affix-wrapper-focused {
+        box-shadow: none;
+      }
+      .@{ant-prefix}-input-group-addon {
+        border: none;
+        border-bottom: 1px solid #d9d9d9;
+        border-radius: 0;
+        background-color: transparent;
+      }
+      .@{ant-prefix}-form-item-has-error .@{ant-prefix}-input {
+        border-color: #ff4d4f;
+      }
+      .@{ant-prefix}-form-item-has-error .@{ant-prefix}-input-affix-wrapper {
+        border-color: #ff4d4f;
+      }
+    }
+  }
+}

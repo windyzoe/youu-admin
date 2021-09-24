@@ -1,0 +1,46 @@
+html,
+body,
+:global(#root) {
+  height: 100%;
+  font-size: 14px;
+}
+
+// 滚动条整体部分
+::-webkit-scrollbar {
+  width: 10px;
+}
+//滚动条两端的按钮
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+//内层轨道，滚动条中间部分
+::-webkit-scrollbar-track-piece {
+  background: #fff;
+  cursor: pointer;
+}
+// 滚动条里面可以拖动的那部分
+::-webkit-scrollbar-thumb {
+  background: rgb(172, 172, 172);
+  border-radius: 6px;
+}
+
+// 隐藏输入数字的箭头
+input[type='number'] {
+  -moz-appearance: textfield !important;
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
