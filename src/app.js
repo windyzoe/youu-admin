@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import './index.less';
 // 全量引入antd样式,局部引入无意义可能会有坑
-import 'antd/dist/antd.less';
+import 'antd/dist/antd.variable.less';
 
 // 0.2---moment国际化配置;
 moment.locale('zh-cn');

@@ -3,7 +3,7 @@ const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackBar = require('webpackbar');
 const apiMocker = require('mocker-api');
-const getTheme = require('./src/theme');
+const { getTheme } = require('./src/theme');
 
 const CSS_MODULE_LOCAL_IDENT_NAME = '[local]__[hash:base64:5]';
 module.exports = {

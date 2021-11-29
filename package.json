@@ -17,7 +17,7 @@
   "dependencies": {
     "@loadable/component": "^5.15.0",
     "ahooks": "^2.9.2",
-    "antd": "^4.16.12",
+    "antd": "^4.17.1",
     "classnames": "^2.2.5",
     "css-animation": "^2.0.0",
     "dva": "^2.6.0-beta.22",

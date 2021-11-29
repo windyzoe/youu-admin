@@ -5,6 +5,7 @@ import { initI18n, getAntdLocale } from '@/i18n';
 import StoreContext from '@/components/StoreContext';
 import Authorized from '@/utils/Authorized';
 import { routerConfig } from './common/router';
+import { themeChanged } from './theme';
 
 const { Route, Switch } = router;
 const { ConnectedRouter } = routerRedux;
@@ -12,6 +13,7 @@ const { AuthorizedRoute } = Authorized;
 
 ConfigProvider.config({
   prefixCls: process.env.REACT_APP_NAME,
+  theme: themeChanged,
 });
 
 class RouterConfigClass extends React.Component {
@@ -34,7 +36,7 @@ class RouterConfigClass extends React.Component {
           <ConnectedRouter history={history}>
             <Switch>
               <Route path="/user/login" component={UserLogin} />
-              <Route path="/" render={(props) => <BasicLayout {...props} />} />
+              <Route path="/" render={props => <BasicLayout {...props} />} />
             </Switch>
           </ConnectedRouter>
         </StoreContext>
