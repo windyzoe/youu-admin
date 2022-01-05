@@ -20,6 +20,7 @@
       background-size: cover;
       opacity: 0.16;
       background-position: 26% center;
+      filter: grayscale(70%);
       overflow-x: hidden;
     }
     .menu {
@@ -71,14 +72,19 @@
     }
   }
   .header {
-    background: transparent;
+    background: linear-gradient(to right, @primary-7, @primary-6);
     margin-bottom: 1rem;
   }
-  .particles {
-    background: linear-gradient(to right, @primary-8, @primary-6);
-    z-index: 0;
-    width: 100%;
+  .menuBgImg {
     position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    opacity: 0.1;
+    background-position: 26% center;
+    filter: grayscale(70%);
+    overflow-x: hidden;
   }
   .menu {
     display: flex;
