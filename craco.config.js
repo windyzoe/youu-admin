@@ -2,29 +2,14 @@ const { when, whenDev, whenProd, whenTest, ESLINT_MODES, POSTCSS_MODES } = requi
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackBar = require('webpackbar');
+// eslint-disable-next-line import/no-dynamic-require
+const babelOptions = require(path.resolve(__dirname, 'babel.config.json'));
 const apiMocker = require('mocker-api');
 const { getTheme } = require('./src/theme');
 
 const CSS_MODULE_LOCAL_IDENT_NAME = '[local]__[hash:base64:5]';
 module.exports = {
-  babel: {
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          loose: true,
-          useBuiltIns: 'entry', // browserslist环境不支持的所有垫片都导入
-          // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
-          // https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md
-          corejs: {
-            version: 3, // 使用core-js@3
-            proposals: true,
-          },
-        },
-      ],
-    ],
-    plugins: [['@babel/plugin-proposal-decorators', { legacy: true }]],
-  },
+  babel: babelOptions,
   style: {
     modules: {
       localIdentName: CSS_MODULE_LOCAL_IDENT_NAME,
@@ -46,11 +31,11 @@ module.exports = {
     },
   },
   devServer: (devServerConfig, { env, paths, proxy, allowedHost }) => {
-    const { before } = devServerConfig;
+    const { onBeforeSetupMiddleware } = devServerConfig;
     // eslint-disable-next-line no-param-reassign
-    devServerConfig.before = (app, server) => {
-      apiMocker(app, path.resolve(__dirname, 'mock/index.js'), {});
-      // before(app, server);
+    devServerConfig.onBeforeSetupMiddleware = devServer => {
+      apiMocker(devServer.app, path.resolve(__dirname, 'mock/index.js'), {});
+      onBeforeSetupMiddleware(devServer);
     };
     return devServerConfig;
   },

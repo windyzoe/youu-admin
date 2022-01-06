@@ -8,15 +8,16 @@
     "start": "cross-env PORT=8181 craco start",
     "build": "cross-env craco build",
     "analyze": "cross-env ANALYZE=true craco build",
+    "prepare": "husky install",
     "lint": "eslint --ext .js src mock tests",
     "lint:fix": "eslint --fix --ext .js src mock tests",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged --no-stash",
     "lint-staged:js": "eslint --ext .js",
     "prettier": "prettier --write ./src/**/**/**/*"
   },
   "dependencies": {
     "@loadable/component": "^5.15.0",
-    "ahooks": "^2.9.2",
+    "ahooks": "^3.1.4",
     "antd": "^4.17.1",
     "classnames": "^2.2.5",
     "css-animation": "^2.0.0",
@@ -42,39 +43,32 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
-    "cross-port-killer": "^1.0.1",
     "enzyme": "^3.1.0",
-    "eslint": "^7.10.0",
-    "eslint-config-airbnb": "^18.0.0",
-    "eslint-config-prettier": "^6.9.0",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-compat": "^3.1.0",
-    "eslint-plugin-markdown": "^1.0.0-beta.6",
-    "husky": "^4.3.0",
-    "lint-staged": "^7.2.0",
+    "eslint-plugin-compat": "^4.0.0",
+    "eslint-plugin-markdown": "^2.2.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.5",
     "mocker-api": "^2.7.4",
     "prettier": "^2.2.1",
-    "less": "^3.8.1",
-    "less-loader": "^7.0.0",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
     "@craco/craco": "^6.0.0",
-    "react-scripts": "^4.0.1",
-    "webpackbar": "^5.0.0-3",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "react-scripts": "^5.0.0",
+    "webpackbar": "^5.0.2",
+    "webpack-bundle-analyzer": "^4.3.2"
   },
   "lint-staged": {
     "**/*.{js,jsx,less}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "**/*.{js,jsx}": "npm run lint-staged:js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
-  },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=14.0.0"
   },
   "browserslist": [
     "chrome > 75"

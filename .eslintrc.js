@@ -1,6 +1,6 @@
 // cra有默认的lint,如果有eslintrc文件,就会覆盖cra默认的lint配置
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   extends: ['airbnb', 'prettier', 'airbnb/hooks'],
   env: {
     browser: true,
