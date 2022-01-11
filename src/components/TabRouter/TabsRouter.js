@@ -10,6 +10,7 @@ const renderTabBar = (props, DefaultTabBar) => {
   return (
     <DefaultTabBar {...props}>
       {(Node) => {
+        // eslint-disable-next-line react/jsx-no-useless-fragment
         return <>{Node}</>;
       }}
     </DefaultTabBar>

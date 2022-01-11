@@ -46,11 +46,9 @@ export default class DrawerPro extends React.Component {
           </Button>
         </>
       ) : (
-        <>
-          <Button key="back" onClick={onCancel}>
-            {cancelText || '关闭'}
-          </Button>
-        </>
+        <Button key="back" onClick={onCancel}>
+          {cancelText || '关闭'}
+        </Button>
       );
     return (
       <Drawer

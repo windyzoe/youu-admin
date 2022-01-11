@@ -9,6 +9,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { changeLocale, SUPPOER_LOCALES, getCurrentLocale } from '@/i18n';
 import { logout } from '@/services/user';
 import { getCurrentUser, getAuthority } from '@/utils/authority';
+import { setLocalStore } from '@/utils/localStore';
 import { getStore } from '@/app';
 import styles from './index.less';
 
@@ -38,12 +39,21 @@ const HeaderActions = () => {
   };
   const menu = (
     <Menu selectedKeys={useSelector((state) => state.global.layout)}>
-      <Menu.Item key="top" onClick={() => getStore().dispatch({ type: 'global/saveData', payload: { layout: 'top' } })}>
+      <Menu.Item
+        key="top"
+        onClick={() => {
+          setLocalStore('layout', 'top');
+          getStore().dispatch({ type: 'global/saveData', payload: { layout: 'top' } });
+        }}
+      >
         顶栏布局
       </Menu.Item>
       <Menu.Item
         key="sider"
-        onClick={() => getStore().dispatch({ type: 'global/saveData', payload: { layout: 'sider' } })}
+        onClick={() => {
+          setLocalStore('layout', 'sider');
+          getStore().dispatch({ type: 'global/saveData', payload: { layout: 'sider' } });
+        }}
       >
         侧栏布局
       </Menu.Item>

@@ -14,10 +14,6 @@ export default class extends React.Component {
   }
 
   render() {
-    return (
-      <>
-        <div id="myApp1" />
-      </>
-    );
+    return <div id="myApp1" />;
   }
 }

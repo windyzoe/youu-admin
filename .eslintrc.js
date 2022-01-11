@@ -9,7 +9,7 @@ module.exports = {
     jest: true,
   },
   rules: {
-    'no-console': 'off',
+    'no-console': [1],
     'generator-star-spacing': [0],
     'spaced-comment': [0],
     strict: [2],
@@ -25,6 +25,7 @@ module.exports = {
     'react/prop-types': [0],
     'react/require-default-props': [0],
     'react/prefer-stateless-function': [0],
+    'react/function-component-definition': 'off',
     'react/static-property-placement': ['error', 'static public field'],
     'linebreak-style': [0, 'windows'],
     'react/jsx-wrap-multilines': [
@@ -42,6 +43,8 @@ module.exports = {
     'no-unused-vars': [1],
     'no-else-return': [0],
     'no-restricted-syntax': [0],
+    'class-methods-use-this': 'off',
+    'default-param-last': 'off',
     'import/no-extraneous-dependencies': [0],
     'no-use-before-define': [0],
     'jsx-a11y/no-static-element-interactions': [0],
@@ -74,6 +77,9 @@ module.exports = {
       experimentalObjectRestSpread: true,
       legacyDecorators: true,
       jsx: true,
+    },
+    babelOptions: {
+      presets: ['@babel/preset-react'],
     },
   },
   settings: {

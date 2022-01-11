@@ -65,25 +65,6 @@ export default class BasicLayout extends React.Component {
     return title;
   }
 
-  getBaseRedirect = () => {
-    // 这里是重定向的,重定向到 url 的 redirect 参数所示地址
-    const urlParams = new URL(window.location.href);
-    const redirect = urlParams.searchParams.get('redirect');
-    // Remove the parameters in the url
-    if (redirect) {
-      urlParams.searchParams.delete('redirect');
-      window.history.replaceState(null, 'redirect', urlParams.href);
-    } else {
-      const routerData = getRouterData();
-      // get the first authorized route path in routerData
-      const authorizedPath = Object.keys(routerData).find(
-        (item) => check(routerData[item].authority, item) && item !== '/'
-      );
-      return authorizedPath;
-    }
-    return redirect;
-  };
-
   render() {
     const { layout, collapsed, tabPage } = this.props;
     const { menuData, userProps } = this.state;
@@ -92,17 +73,13 @@ export default class BasicLayout extends React.Component {
     if (!Array.isArray(menuData) || menuData.length === 0) {
       return <StaticLoading />;
     }
-    const baseRedirect = this.getBaseRedirect();
+    const baseRedirect = getBaseRedirect();
     console.log('%c baseRedirect', 'color: red; font-size: 24px;', baseRedirect);
     const LayoutComponent = layout === 'top' ? TopHeaderLayout : SiderLayout;
     return (
       <DocumentTitle title={this.getPageTitle()}>
         <LayoutComponent collapsed={collapsed} menuData={getMenuData()}>
-          {tabPage ? (
-            <LayoutContent baseRedirect={baseRedirect} />
-          ) : (
-            <LayoutContentNoTabs baseRedirect={baseRedirect} />
-          )}
+          {tabPage ? <LayoutContent baseRedirect={baseRedirect} /> : <LayoutContentNoTabs baseRedirect={baseRedirect} />}
           <MicroAppIds userProps={userProps} />
           <BackTop visibilityHeight={20} style={{ right: '12px' }} />
         </LayoutComponent>
@@ -136,11 +113,7 @@ const LayoutContentNoTabs = React.memo(({ baseRedirect }) => {
 
 const LayoutContent = React.memo(({ baseRedirect }) => {
   return (
-    <TabsRouter
-      noFoundURL="/exception/todo"
-      prefixCls={`youuui ${process.env.REACT_APP_NAME}-tabs`}
-      className={styles.tabRouter}
-    >
+    <TabsRouter noFoundURL="/exception/todo" prefixCls={`youuui ${process.env.REACT_APP_NAME}-tabs`} className={styles.tabRouter}>
       {redirectData.map((item) => (
         <Redirect key={item.from} exact path={item.from} from={item.from} to={item.to} />
       ))}
@@ -159,3 +132,20 @@ const LayoutContent = React.memo(({ baseRedirect }) => {
     </TabsRouter>
   );
 });
+
+const getBaseRedirect = () => {
+  // 这里是重定向的,重定向到 url 的 redirect 参数所示地址
+  const urlParams = new URL(window.location.href);
+  const redirect = urlParams.searchParams.get('redirect');
+  // Remove the parameters in the url
+  if (redirect) {
+    urlParams.searchParams.delete('redirect');
+    window.history.replaceState(null, 'redirect', urlParams.href);
+  } else {
+    const routerData = getRouterData();
+    // get the first authorized route path in routerData
+    const authorizedPath = Object.keys(routerData).find((item) => check(routerData[item].authority, item) && item !== '/');
+    return authorizedPath;
+  }
+  return redirect;
+};

@@ -1,7 +1,7 @@
 @import '~antd/lib/style/themes/variable.less';
 
 .siderLayout {
-  flex-direction:row;
+  flex-direction: row;
   .sider {
     display: flex;
     flex-direction: column;
@@ -10,8 +10,7 @@
     height: 100vh;
     z-index: 4;
     background-color: transparent;
-    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12),
-      0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
     .menuBgImg {
       position: absolute;
       z-index: -1;
@@ -42,7 +41,8 @@
       cursor: pointer;
     }
     :global {
-      .@{ant-prefix}-menu {
+      .@{ant-prefix}-menu,
+      .@{ant-prefix}-menu-item:active {
         background: transparent;
       }
       .@{ant-prefix}-layout-sider-children {
@@ -53,13 +53,15 @@
       .@{ant-prefix}-menu-inline .@{ant-prefix}-menu-item-selected::after {
         opacity: 0;
       }
-      .@{ant-prefix}-menu:not(.@{ant-prefix}-menu-horizontal) .@{ant-prefix}-menu-item-selected{
-        border-radius: 1rem;
-        box-shadow: 0 0 6px @primary-5;
+      .@{ant-prefix}-menu:not(.@{ant-prefix}-menu-horizontal) .@{ant-prefix}-menu-item-selected {
         background-color: @primary-6;
-        a,a:hover{
+        a,
+        a:hover {
           color: #fff;
         }
+      }
+      .@{ant-prefix}-menu-item {
+        border-radius: 1rem;
       }
     }
   }
@@ -96,33 +98,29 @@
         letter-spacing: 0.05rem;
       }
       .@{ant-prefix}-menu-horizontal {
-        border: 0;
+        border-bottom-color: transparent;
       }
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item:hover,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu:hover,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-active,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-active,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-open,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-open,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-selected,
-      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-selected {
-        border: 0;
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item:hover::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu:hover::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-active::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-active::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-open::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-open::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-item-selected::after,
+      .@{ant-prefix}-menu-horizontal:not(.@{ant-prefix}-menu-dark) > .@{ant-prefix}-menu-submenu-selected::after {
+        border-bottom-color: #fff;
         font-weight: 700;
-      }
-      .@{ant-prefix}-menu-horizontal > .@{ant-prefix}-menu-submenu {
-        border: 0;
       }
     }
   }
 }
 .tabRouter {
-  :global{
-
+  :global {
     .@{ant-prefix}-tabs-nav.youuui {
       margin-bottom: 0;
     }
     .@{ant-prefix}-tabs-nav.youuui {
-      &:before{
+      &:before {
         border-color: #e8e8e8;
       }
     }

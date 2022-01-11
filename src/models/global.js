@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
 import pathToRegexp from 'path-to-regexp';
-import { getPageQuery } from '../utils/utils';
+import { getLocalStore } from '../utils/localStore';
 import { reloadAuthorized } from '../utils/Authorized';
 
 // 全局modal，早于router加载
@@ -11,7 +11,7 @@ export default {
     // 侧边菜单收缩
     collapsed: false,
     // 布局
-    layout: 'sider',
+    layout: getLocalStore('layout') ?? 'sider',
     // 是否用tab来切换页面
     tabPage: true,
   },

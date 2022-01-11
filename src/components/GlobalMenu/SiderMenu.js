@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Menu, Popover } from 'antd';
+import { Menu } from 'antd';
 import { Link, withRouter } from 'dva/router';
 import { getMenuMatchKeys } from '@/common/menu';
 import IconPro from '@/components/IconPro';
@@ -28,9 +28,18 @@ class SiderMenu extends PureComponent {
     };
   }
 
+  // 监听path和闭合状态来判断menu的弹出
   componentDidUpdate(prevProps) {
-    const { location } = this.props;
-    if (prevProps.location.pathname !== location.pathname) {
+    const { location, collapsed } = this.props;
+    // 1--path变化,并且不是闭合状态
+    if (prevProps.location.pathname !== location.pathname && collapsed === false) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        openKeys: this.getDefaultCollapsedSubMenus(this.props),
+      });
+    }
+    // 2--打开状态时,再次确认openKeys
+    if (prevProps.collapsed === true && collapsed === false) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         openKeys: this.getDefaultCollapsedSubMenus(this.props),
@@ -141,18 +150,20 @@ class SiderMenu extends PureComponent {
     return ItemDom;
   };
 
-  isMainMenu = (key) => {
+  /**
+   * 判断menukey是不是一级的
+   * @param {string} key menukey,一般是path
+   * @returns
+   */
+  isFirstMenu = (key) => {
     const { menuData } = this.props;
     return menuData.some((item) => key && (item.key === key || item.path === key));
   };
 
   handleOpenChange = (openKeys) => {
-    const { collapsed } = this.props;
-    // collapsed 不需要设置Openkey,为啥antd4要在闭合的时候调用Openkeychange啊
-    if (collapsed) return;
     const lastOpenKey = openKeys[openKeys.length - 1];
     // 如果一级菜单的数量大于1,那么就直接用lastOpenkey
-    const moreThanOne = openKeys.filter((openKey) => this.isMainMenu(openKey)).length > 1;
+    const moreThanOne = openKeys.filter((openKey) => this.isFirstMenu(openKey)).length > 1;
     this.setState({
       openKeys: moreThanOne ? [lastOpenKey] : [...openKeys],
     });
@@ -170,7 +181,7 @@ class SiderMenu extends PureComponent {
       <Menu
         key="Menu"
         mode="inline"
-        openKeys={collapsed ? undefined : openKeys}
+        openKeys={openKeys}
         onOpenChange={this.handleOpenChange}
         selectedKeys={selectedKeys}
         inlineCollapsed={collapsed}
